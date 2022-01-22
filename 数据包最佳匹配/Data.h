@@ -4,6 +4,9 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include<vector>
+
+using std::vector;
 using std::cout;
 using std::endl;
 using std::string;
@@ -19,11 +22,10 @@ class Data
   uint32_t tcp_;
 
 public:
-  friend ifstream& Read(string &file_name, Data &data);
-  friend ostream& print(ostream& os, Data& data);
+  friend vector<Data> Read(string &file_name);
+  friend ostream& operator<<(ostream& os, Data& data);
 };
 #endif // DATA_H
-
-ifstream& Read(string &file_name, Data &data);
+ostream& operator<<(ostream& os, Data& data);
+vector<Data> Read(string &file_name);
 uint32_t TransIp(string s);
-ostream& print(ostream& os, Data& data);
