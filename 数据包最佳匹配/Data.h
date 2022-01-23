@@ -22,10 +22,9 @@ class Data
   uint32_t tcp_;
 
 public:
-  friend vector<Data> Read(string &file_name);
+  friend vector<Data> ReadData(string &file_name);
   friend ostream& operator<<(ostream& os, Data& data);
 };
 #endif // DATA_H
 ostream& operator<<(ostream& os, Data& data);
-vector<Data> Read(string &file_name);
-uint32_t TransIp(string s);
+vector<Data> ReadData(string &file_name);

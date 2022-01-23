@@ -21,6 +21,9 @@
     <ClCompile Include="read_data.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="read_rule.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h">

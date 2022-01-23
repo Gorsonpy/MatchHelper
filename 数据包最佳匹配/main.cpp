@@ -3,6 +3,7 @@
 #include<string>
 #include<vector>
 #include"Data.h"
+#include"Rule.h"
 
 using std::cin;
 using std::cout;
@@ -14,12 +15,11 @@ using std::vector;
 
 int main()
 {
-  string file_name = "packet1.txt";
-  vector<Data> datalist = Read(file_name);
-  if (datalist.size() > 1)
-    datalist.pop_back();  //fstream会多读最后一空行，这里特判删除一下。
-  for (auto data : datalist)
-    cout << data << endl;
+  string file_name = "test.txt";
+  vector<Data> datalist = ReadData(file_name);
+  for (auto c : datalist)
+    cout << c << endl;
+  //vector<Rule> rulelist = ReadRule(file_name);
   system("pause");
   return 0;
 }
