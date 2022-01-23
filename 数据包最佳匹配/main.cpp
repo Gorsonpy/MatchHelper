@@ -15,11 +15,14 @@ using std::vector;
 
 int main()
 {
-  string file_name = "test.txt";
-  vector<Data> datalist = ReadData(file_name);
+  string s1 = "pac.txt";
+  string s2 = "rule.txt";
+  vector<Data> datalist = ReadData(s1);
+  vector<Rule> rulelist = ReadRule(s2);
   for (auto c : datalist)
     cout << c << endl;
-  //vector<Rule> rulelist = ReadRule(file_name);
+  for (auto c : rulelist)
+    cout << c << endl; 
   system("pause");
   return 0;
 }

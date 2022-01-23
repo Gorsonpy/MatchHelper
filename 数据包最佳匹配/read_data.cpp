@@ -20,24 +20,12 @@ vector<Data> ReadData(string &file_name)
     port1 = 0, port2 = 0, tcp = 0;
   while (!fin.eof() && fin.peek() != EOF)
   {
-    Data data;
     fin >> point_ip1 >> point_ip2 >> port1 >> port2 >> tcp;
-    data.origin_ip_ = point_ip1;
-    data.receiver_ip_ = point_ip2;
-    data.origin_port_ = port1;
-    data.receiver_port_ = port2;
-    data.tcp_ = tcp;
+    Data data(point_ip1, port1, point_ip2, port2, tcp);
     datalist.push_back(data);
   }
   if (point_ip1 == 4294967295)
-    datalist.pop_back();  //fstream可能多读最后一空行，这里特判删除一下。
+    datalist.pop_back();  //ifstream可能多读最后一空行，这里特判删除一下
   fin.close();
   return datalist;
-}
-ostream& operator<<(ostream& os, Data& data)
-{
-  os << data.origin_ip_ << " " << data.receiver_ip_ << " "
-    << data.origin_port_ << " " << data.receiver_port_ << " "
-    << data.tcp_;
-  return os;
 }

@@ -1,15 +1,15 @@
 #include<iostream>
 #include<fstream>
-#include<algorithm>
 #include<string>
 #include"Rule.h"
 
 using std::string;
-using std::reverse;
 using std::vector;
 using std::fstream;
 
-uint32_t uint_pow(uint32_t c, uint32_t e)
+
+
+uint32_t uint_pow(uint32_t c, uint32_t e) //乘方函数
 {
   uint32_t base = c, ans = 1;
   while (e > 0)
@@ -22,18 +22,21 @@ uint32_t uint_pow(uint32_t c, uint32_t e)
   return ans;
 }
 
-uint32_t TransIp(string s)
+uint32_t TransIp(string s) //ip地址转化为十进制数字
 {
-  auto it = s.begin();
-  while (it != s.end())
-    it = *it == '.' ? s.erase(it) : it + 1;
-  reverse(s.begin(), s.end());
-  uint32_t base = 1, ans = 0;
+  uint32_t ans = 0, curr = 0, base = 24;
   for (auto c : s)
   {
-    ans += (c - 48) * base;
-    base *= uint_pow(2, 8);
+    if (c == '.')
+    {
+      ans += curr * uint_pow(2, base);
+      curr = 0;
+      base -= 8;
+    }
+    else
+      curr = curr * 10 + c - 48;
   }
+  ans += curr; //最后还要加上一次
   return ans;
 }
 
@@ -41,13 +44,57 @@ vector<Rule> ReadRule(string& file_name)
 {
   ifstream fin(file_name);
   vector<Rule> rulelist;
-  char other = '\0';
-  string 
+  string ip1, ip2;
+  uint32_t port1_beg = 0, port1_end = 0, port2_beg = 0, port2_end = 0,
+    tcp = 0;
+
+  //以下分离两ip地址
   while (!fin.eof() && fin.peek() != EOF)
   {
-    
+    fin >> ip1 >> ip2;
+    auto it1 = ip1.begin();
+    while (it1 != ip1.end())
+    {
+      if (*it1 == '@')
+        it1 = ip1.erase(it1);
+      else if (*it1 == '/')
+      {
+        ip1.erase(it1, ip1.end());
+        break;
+      }
+      else
+        ++it1;
+    }
+    auto it2 = ip2.begin();
+    while (it2 != ip2.end())
+    {
+      if (*it2 == '/')
+      {
+        ip2.erase(it2, ip2.end());
+        break;
+      }
+      else
+        ++it2;
+    }
+
+    //以下分离端口
+    char other = '\0';
+    fin >> port1_beg >> other >> port1_end;
+    fin >> port2_beg >> other >> port2_end;
+
+    //以下分离tcp端口值
+    string str_tcp;
+    fin >> str_tcp;
+    if (str_tcp[7] == 'F' && str_tcp[8] == 'F')
+      tcp = 16 * (str_tcp[2] - 48) + str_tcp[3] - 48;
+    else if (str_tcp[7] == '0' && str_tcp[8] == '0')
+      tcp = 256;      // 两位数十六进制的最大值为1111 1111 = 255
+    //特殊标记,表示可以匹配所有协议号
+
+    Rule rule(TransIp(ip1), TransIp(ip2), port1_beg, port1_end, port2_beg,
+      port2_end, tcp);
+    rulelist.push_back(rule);
   }
-  
   fin.close();
   return rulelist;
 }
