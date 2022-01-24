@@ -40,7 +40,22 @@ uint32_t TransIp(string s) //ip地址转化为十进制数字
   return ans;
 }
 
-vector<Rule> ReadRule(string& file_name)
+void div_str(string& ip)  //分离ip里多余的位数信息
+{
+  auto it = ip.begin();
+  while (it != ip.end())
+  {
+    if (*it == '/')
+    {
+      ip.erase(it, ip.end());
+      break;
+    }
+    else
+      ++it;
+  }
+}
+
+vector<Rule> ReadRule(string &file_name)
 {
   ifstream fin(file_name);
   vector<Rule> rulelist;
@@ -51,31 +66,13 @@ vector<Rule> ReadRule(string& file_name)
   //以下分离两ip地址
   while (!fin.eof() && fin.peek() != EOF)
   {
+    char font = '\0';
+    fin >> font;
+    if (font == '\0')  //监测是否是最后一个空行
+      break;
     fin >> ip1 >> ip2;
-    auto it1 = ip1.begin();
-    while (it1 != ip1.end())
-    {
-      if (*it1 == '@')
-        it1 = ip1.erase(it1);
-      else if (*it1 == '/')
-      {
-        ip1.erase(it1, ip1.end());
-        break;
-      }
-      else
-        ++it1;
-    }
-    auto it2 = ip2.begin();
-    while (it2 != ip2.end())
-    {
-      if (*it2 == '/')
-      {
-        ip2.erase(it2, ip2.end());
-        break;
-      }
-      else
-        ++it2;
-    }
+    div_str(ip1);
+    div_str(ip2);
 
     //以下分离端口
     char other = '\0';

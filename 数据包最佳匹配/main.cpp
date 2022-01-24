@@ -4,25 +4,24 @@
 #include<vector>
 #include"Data.h"
 #include"Rule.h"
+#include"match_util.h"
 
-using std::cin;
 using std::cout;
 using std::string;
-using std::ofstream;
-using std::ifstream;
 using std::endl;
 using std::vector;
 
 int main()
 {
-  string s1 = "pac.txt";
-  string s2 = "rule.txt";
-  vector<Data> datalist = ReadData(s1);
-  vector<Rule> rulelist = ReadRule(s2);
-  for (auto c : datalist)
-    cout << c << endl;
-  for (auto c : rulelist)
-    cout << c << endl; 
+  string name1 = "packet1.txt";
+  string name2 = "rule1.txt";
+  string name3 = "ans.txt";
+
+  
+  vector<Data> datalist = ReadData(name1);
+  vector<Rule> rulelist = ReadRule(name2);
+
+  WriteInFile(name3, datalist, rulelist);
   system("pause");
   return 0;
 }

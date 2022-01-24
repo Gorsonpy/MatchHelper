@@ -30,12 +30,21 @@
     <ClCompile Include="operator_rule.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="do_match.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Write_in_file.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Rule.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="match_util.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

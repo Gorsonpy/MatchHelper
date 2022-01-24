@@ -16,15 +16,15 @@ vector<Data> ReadData(string &file_name)
 {
   ifstream fin(file_name);
   vector<Data> datalist;
-  uint32_t point_ip1 = 4294967295, point_ip2 = 0,
-    port1 = 0, port2 = 0, tcp = 0;
+  uint32_t point_ip1 = 0, point_ip2 = 0,
+    port1 = 0, port2 = 0, tcp = 4294967295;
   while (!fin.eof() && fin.peek() != EOF)
   {
     fin >> point_ip1 >> point_ip2 >> port1 >> port2 >> tcp;
     Data data(point_ip1, port1, point_ip2, port2, tcp);
     datalist.push_back(data);
   }
-  if (point_ip1 == 4294967295)
+//  if (tcp == 4294967295)
     datalist.pop_back();  //ifstream可能多读最后一空行，这里特判删除一下
   fin.close();
   return datalist;

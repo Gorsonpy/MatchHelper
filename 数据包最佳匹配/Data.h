@@ -24,10 +24,19 @@ class Data
 public:
   friend vector<Data> ReadData(string &file_name);
   friend ostream& operator<<(ostream& os, Data& data);
+
+
   Data() = default;
   Data(uint32_t ip1, uint32_t port1, uint32_t ip2, uint32_t port2,
     uint32_t tcp) : origin_ip_(ip1), origin_port_(port1), receiver_ip_(ip2),
     receiver_port_(port2), tcp_(tcp) {};
+
+
+  uint32_t origin_ip()const { return origin_ip_; }
+  uint32_t origin_port()const { return origin_port_; }
+  uint32_t receiver_ip()const { return receiver_ip_; }
+  uint32_t receiver_port()const { return receiver_port_; }
+  uint32_t tcp()const { return tcp_; }
 };
 #endif // DATA_H
 ostream& operator<<(ostream& os, Data& data);
