@@ -8,7 +8,7 @@
 using std::ofstream;
 using std::endl;
 
-void WriteInFile(string &file_name, vector<Data> &datalist,
+void Result_In_File(string &file_name, vector<Data> &datalist,
   vector<Rule> &rulelist)
 {
   ofstream fout(file_name);

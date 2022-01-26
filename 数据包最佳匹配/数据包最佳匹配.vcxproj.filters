@@ -36,6 +36,9 @@
     <ClCompile Include="Write_in_file.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="enquire_user.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h">

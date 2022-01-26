@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="do_match.cpp" />
+    <ClCompile Include="enquire_user.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operator_data.cpp" />
     <ClCompile Include="operator_rule.cpp" />

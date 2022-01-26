@@ -13,13 +13,15 @@ using std::string;
 using std::ifstream;
 using std::istream;
 using std::ostream;
+using ll = long long;
+
 class Data
 {
-  uint32_t origin_ip_; //十进制
+  ll origin_ip_; //十进制
   uint32_t origin_port_;
-  uint32_t receiver_ip_; //十进制存储
-  uint32_t receiver_port_;
-  uint32_t tcp_;
+  ll receiver_ip_; //十进制存储
+  ll receiver_port_;
+  ll tcp_;
 
 public:
   friend vector<Data> ReadData(string &file_name);
@@ -27,16 +29,16 @@ public:
 
 
   Data() = default;
-  Data(uint32_t ip1, uint32_t port1, uint32_t ip2, uint32_t port2,
-    uint32_t tcp) : origin_ip_(ip1), origin_port_(port1), receiver_ip_(ip2),
+  Data(ll ip1, ll port1, ll ip2, ll port2,
+    ll tcp) : origin_ip_(ip1), origin_port_(port1), receiver_ip_(ip2),
     receiver_port_(port2), tcp_(tcp) {};
 
 
-  uint32_t origin_ip()const { return origin_ip_; }
-  uint32_t origin_port()const { return origin_port_; }
-  uint32_t receiver_ip()const { return receiver_ip_; }
-  uint32_t receiver_port()const { return receiver_port_; }
-  uint32_t tcp()const { return tcp_; }
+  ll origin_ip()const { return origin_ip_; }
+  ll origin_port()const { return origin_port_; }
+  ll receiver_ip()const { return receiver_ip_; }
+  ll receiver_port()const { return receiver_port_; }
+  ll tcp()const { return tcp_; }
 };
 #endif // DATA_H
 ostream& operator<<(ostream& os, Data& data);

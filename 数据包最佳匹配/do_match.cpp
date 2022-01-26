@@ -6,9 +6,11 @@ using std::vector;
 
 bool check(Data& data, Rule& rule)
 {
-  if (data.origin_ip() != rule.origin_ip())
+  if (data.origin_ip() < rule.origin_ip_beg() || 
+    data.origin_ip() > rule.origin_ip_end())
     return false;
-  if (data.receiver_ip() != rule.receiver_ip())
+  if (data.receiver_ip() < rule.receiver_ip_beg() || 
+    data.receiver_ip() > rule.receiver_ip_end())
     return false;
   if (data.origin_port() < rule.origin_port_beg()
     || data.origin_port() > rule.origin_port_end())
