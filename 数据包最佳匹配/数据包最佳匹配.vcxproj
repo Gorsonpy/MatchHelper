@@ -146,7 +146,7 @@
     <ClCompile Include="operator_rule.cpp" />
     <ClCompile Include="read_data.cpp" />
     <ClCompile Include="read_rule.cpp" />
-    <ClCompile Include="Write_in_file.cpp" />
+    <ClCompile Include="result_in_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />

@@ -1,3 +1,1 @@
-﻿  Write_in_file.cpp
-D:\Coding\C++ development\MatchHelper\MatchHelper\数据包最佳匹配\Data.h(33,44): warning C4244: 'initializing': conversion from 'll' to 'uint32_t', possible loss of data
-  数据包最佳匹配.vcxproj -> D:\Coding\C++ development\MatchHelper\MatchHelper\x64\Debug\数据包最佳匹配.exe
+﻿  数据包最佳匹配.vcxproj -> D:\Coding\C++ development\MatchHelper\MatchHelper\x64\Debug\数据包最佳匹配.exe

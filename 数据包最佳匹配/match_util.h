@@ -9,6 +9,6 @@ using std::vector;
 vector<int32_t> DoMatch(vector<Data> &datalist, vector<Rule> &rulelist);
 bool check(Data& data, Rule& rule);
 void Result_In_File(string &file_name, vector<Data> &datalist,
-  vector<Rule> &rulelist);
+  vector<Rule> &rulelist, string &packet_name);
 void EnquireUser();
 #endif // !MATCH_UTIL_H
