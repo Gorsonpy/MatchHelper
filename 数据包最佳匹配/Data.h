@@ -18,7 +18,7 @@ using ll = long long;
 class Data
 {
   ll origin_ip_; //十进制
-  uint32_t origin_port_;
+  ll origin_port_;
   ll receiver_ip_; //十进制存储
   ll receiver_port_;
   ll tcp_;
