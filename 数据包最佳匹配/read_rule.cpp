@@ -2,7 +2,6 @@
 #include<algorithm>
 #include<fstream>
 #include<string>
-#include<cstring> //在部分环境下memset必须调用c下的标准库
 #include<algorithm>
 #include"Rule.h"
 
@@ -29,7 +28,7 @@ long long qpower(ll a, ll b)
   return ans;
 }
 //这里函数不传引用，因为不能从逻辑上不应更改传入的字符串
-PII StrBin_To_Dec(string str_bin, ll bit) //把二进制的字符串转化为十进制
+PII StrBin_To_Dec(string &str_bin, ll bit) //把二进制的字符串转化为十进制
 //返回一个最小地址ip和最大地址ip的二元组
 {
   PII min_max;
